@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Carousel, Container } from 'react-bootstrap';
 
 let SERVER = process.env.REACT_APP_SERVER;
 
@@ -7,7 +8,8 @@ class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      showCarousel: false
     }
   };
 
@@ -16,14 +18,14 @@ class BestBooks extends React.Component {
   getBooks = async () => {
     try {
       let results = await axios.get(`${SERVER}/books`);
-      console.log('sent to server', results);
       this.setState({
-        books: results.data
+        books: results.data,
+        showCarousel: true
       })
-
       console.log(this.state.books);
+      console.log(this.state.showCarousel);
     } catch (error) {
-      console.log('an error has occured: ', error.response.data)
+      console.log('an error has occurred: ', error.response.data)
     }
   }
 
@@ -32,18 +34,27 @@ class BestBooks extends React.Component {
   }
 
   render() {
-
-    /* TODO: render user's books in a Carousel */
-
     return (
       <>
-        <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+        <h2>Can-Of-Books</h2>
+        {
+          this.state.showCarousel
+            ?
+            <Container>
+              <Carousel>
+                {this.state.books.map(book => (
+                  <Carousel.Item key={book._id}>
+                    <h3>
+                      Book Title: {book.title}
+                    </h3>
 
-        {this.state.books.length ? (
-          <p>Book Carousel coming soon</p>
-        ) : (
-          <h3>No Books Found :(</h3>
-        )}
+                  </Carousel.Item>
+                ))}
+              </Carousel>
+            </Container>
+            :
+            <p>the book collection is empty</p>
+        }
       </>
     )
   }
