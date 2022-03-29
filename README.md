@@ -23,9 +23,8 @@ Our collective human organization lin-mc-mak shall create a small app to track w
 
 ## Change Log
 
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+03-28-2022 18:33 - Application now has a fully-functional express server, with a GET route for the database request.
+Seed function can be used to instantiate data into database.
 
 ## Estimates
 
@@ -40,6 +39,7 @@ Finish time: ???
 Actual time needed to complete: _____
 
 WRRC for today
+
 ![WRRC for today](img/wrrc-lab-11.png "Monday Whiteboard")
 
 ## Credit and Collaborations
