@@ -1,4 +1,7 @@
 import React from 'react';
+import axios from 'axios';
+
+let SERVER = process.env.REACT_APP_SERVER;
 
 class BestBooks extends React.Component {
   constructor(props) {
@@ -6,9 +9,27 @@ class BestBooks extends React.Component {
     this.state = {
       books: []
     }
-  }
+  };
+
 
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
+  getBooks = async () => {
+    try {
+      let results = await axios.get(`${SERVER}/books`);
+      console.log('sent to server', results);
+      this.setState({
+        books: results.data
+      })
+
+      console.log(this.state.books);
+    } catch (error) {
+      console.log('an error has occured: ', error.response.data)
+    }
+  }
+
+  componentDidMount() {
+    this.getBooks();
+  }
 
   render() {
 
