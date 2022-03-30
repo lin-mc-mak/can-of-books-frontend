@@ -12,6 +12,10 @@ import { Container } from 'react-bootstrap';
 import BestBooks from './BestBooks';
 import Profile from './Profile';
 import Login from './Login'
+import axios from 'axios';
+
+const SERVER = process.env.REACT_APP_SERVER;
+const API_URL = `${SERVER}/books`;
 
 class App extends React.Component {
 
@@ -56,8 +60,14 @@ class App extends React.Component {
       books: []
     })
   }
-
-
+  // onCreate
+  handleBookCreation = async (bookInfo) => {
+    const response = await axios.post(API_URL, bookInfo);
+    const newBook = response.data;
+    this.setState({
+      books: [...this.state.books, newBook]
+    })
+  }  
 
   render() {
     // console.log(this.state.user);

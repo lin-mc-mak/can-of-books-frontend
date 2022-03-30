@@ -24,12 +24,38 @@ class BestBooks extends React.Component {
       console.log('an error has occurred: ', error.response.data)
     }
   }
+// super secret commented out line
+  postBook = async (newBook) => {
+    try {
+      let createdBook = await axios.post(`${SERVER}/books`, newBook);
+      console.log(createdBook, 'Book posted to DB');
+      this.setState({
+        books: [...this.state.books, createdBook.data]
+      })
+    } catch (error) {
+      console.log(error.response)
+    }
+  }
+
+  handleBookSubmit = (e) => {
+    e.preventDefault();
+    let newBook = {
+      title: e.target.title.value,
+      description: e.target.description.value,
+      email: this.props.email,
+      status: false,
+    }
+    this.postBook(newBook);
+  }
+
+
 
   componentDidMount() {
     this.getBooks();
   }
 
   render() {
+    console.log(this.props, 'our best books props');
     return (
       <>
         <h2>Can-Of-Books</h2>
