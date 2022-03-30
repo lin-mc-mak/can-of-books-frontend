@@ -1,9 +1,12 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import LoginButton from './LoginButton'
+// import LoginForm from './LoginForm';
 import './Login.css';
 
 class Login extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <Card style={{ width: '18rem' }}>
         <Card.Body>
@@ -11,7 +14,8 @@ class Login extends React.Component {
           <Card.Text>
             Click Below to Log In
           </Card.Text>
-          {/* TODO: add a `LoginButton` component here that will log the user in */}
+          <LoginButton 
+          handleUsernameInput={this.props.handleUsernameInput}/>
         </Card.Body>
       </Card>
     )
