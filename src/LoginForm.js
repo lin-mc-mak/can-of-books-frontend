@@ -35,7 +35,6 @@ class LoginForm extends Component {
 
   render() {
     // console.log('form state', this.state);
-    /* TODO: create a "simple" login form that collects username and and email, and lets parent component know when form has been submitted */
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
