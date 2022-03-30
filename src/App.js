@@ -17,6 +17,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: null,
+      // user: {}
       books: [],
     }
   }
@@ -46,8 +47,8 @@ class App extends React.Component {
 
 
   render() {
-    console.log(this.state.user);
-    console.log('app state',this.state);
+    // console.log(this.state.user);
+    // console.log('app state',this.state);
     return (
       <>
         <Router>
@@ -69,9 +70,9 @@ class App extends React.Component {
 
             </Route>
 
-            {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
             <Route exact path='/profile'>
               <Profile
+                user={this.state.user}
                 books={this.state.books} />
             </Route>
 
