@@ -20,8 +20,6 @@ class BestBooks extends React.Component {
         books: results.data,
         showCarousel: true
       })
-      console.log(this.state.books);
-      console.log(this.state.showCarousel);
     } catch (error) {
       console.log('an error has occurred: ', error.response.data)
     }
@@ -45,7 +43,7 @@ class BestBooks extends React.Component {
                     <h3>
                       Book Title: {book.title}
                     </h3>
-
+                    <h4>Overview: {book.description}</h4>
                   </Carousel.Item>
                 ))}
               </Carousel>
