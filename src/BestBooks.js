@@ -36,7 +36,7 @@ class BestBooks extends React.Component {
         {
           this.state.showCarousel
             ?
-            <Container>
+            <Container style={{ width: '75%' }}>
               <Carousel>
                 {this.state.books.map(book => (
                   <Carousel.Item key={book._id}>
