@@ -1,12 +1,13 @@
 import { Component } from "react";
+import { Button } from "react-bootstrap";
 
 class LogoutButton extends Component {
 
   render() {
     return (
-      <button onClick={this.props.logoutHandler}>
-        Log Out!
-      </button>
+      <Button onClick={this.props.logoutHandler}>
+        Log Out
+      </Button>
     );
   }
 };
