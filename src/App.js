@@ -17,6 +17,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       user: null,
+      email: null,
       // user: {}
       books: [],
     }
@@ -27,6 +28,14 @@ class App extends React.Component {
     // console.log(e.target.value);
     this.setState({
       user
+    })
+  }
+
+  handleEmailInput = (email) => {
+    // e.preventDefault();
+    // console.log(e.target.value);
+    this.setState({
+      email
     })
   }
 
@@ -41,6 +50,8 @@ class App extends React.Component {
   logoutHandler = () => {
     this.setState({
       user: null,
+      email:null,
+      books: []
     })
   }
 
@@ -49,6 +60,7 @@ class App extends React.Component {
   render() {
     // console.log(this.state.user);
     // console.log('app state',this.state);
+    console.log('email in app state',this.state.email);
     return (
       <>
         <Router>
@@ -65,6 +77,7 @@ class App extends React.Component {
               :
               <Login
               handleUsernameInput={this.handleUsernameInput}
+              handleEmailInput={this.handleEmailInput}
               />
               }
 
@@ -73,7 +86,8 @@ class App extends React.Component {
             <Route exact path='/profile'>
               <Profile
                 user={this.state.user}
-                books={this.state.books} />
+                books={this.state.books}
+                email={this.state.email} />
             </Route>
 
           </Switch>
