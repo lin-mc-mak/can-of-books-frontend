@@ -1,8 +1,7 @@
 # can-of-books-back-end
 
 **Authors**: Ryan McMillan, Dwight Lindquist, and Michael Maker!
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
-
+**Version**: 1.1.0 
 ## Overview
 
 Our collective human organization lin-mc-mak shall create a small app to track what books have impacted us, and what’s recommended to read next
@@ -23,8 +22,14 @@ Our collective human organization lin-mc-mak shall create a small app to track w
 
 ## Change Log
 
+
 03-28-2022 18:33 - Application now has a fully-functional express server, with a GET route for the database request.
 Seed function can be used to instantiate data into database.
+
+03-30-2022 11:40 - Front end now has simple login form and header navigation between home page and profile page. Back-end now has connection with mongoDB and can GET seed data from database, will be adding CREATE and DELETE functionality.
+
+## Estimates
+
 
 ## Estimates
 
@@ -32,15 +37,13 @@ Name of feature: Book Storage
 
 Estimate of time needed to complete: 3:30
 
-Start time: 15:00
+Worked over multiple days
 
-Finish time: ???
-
-Actual time needed to complete: _____
+Actual time needed to complete: about 8 hours
 
 WRRC for today
 
-![WRRC for today](img/wrrc-lab-11.png "Monday Whiteboard")
+![WRRC for today](./img/wrrc-lab-11.png "Monday Whiteboard")
 
 ## Credit and Collaborations
 
