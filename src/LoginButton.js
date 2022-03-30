@@ -17,10 +17,13 @@ export default class LoginButton extends React.Component {
 
   render() {
     // console.log(this.props)
-    if(this.state.buttonClicked){
-      return <LoginForm handleUsernameInput={this.props.handleUsernameInput}/>
+    if (this.state.buttonClicked) {
+      return <LoginForm
+        handleUsernameInput={this.props.handleUsernameInput}
+        handleEmailInput={this.props.handleEmailInput} 
+        />
     } else {
-      return  < Button type="submit" onClick={this.handleLoginButton} > Login</Button >
+      return < Button type="submit" onClick={this.handleLoginButton} > Login</Button >
     }
     /* TODO: Render a button with label 'Log In'. When the button is clicked then show LoginForm instead */
   }

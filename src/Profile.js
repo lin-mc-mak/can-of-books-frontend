@@ -1,13 +1,18 @@
 import { Component } from "react";
+import { Container } from "react-bootstrap";
 
 class Profile extends Component {
 
   render() {
-    /* TODO: render information about logged in user */
     /* STRETCH TODO: if no logged in user then redirect home */
-
     console.log('props in profile.js - ', this.props);
-    return <p>Welcome, {this.props.user}</p>
+    return (
+      // render logged in user info here
+      <Container>
+        <p>Welcome, {this.props.user}</p>
+        <p>{this.props.email} currently logged in</p>
+      </Container>
+    )
   }
 };
 

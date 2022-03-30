@@ -15,7 +15,8 @@ class Login extends React.Component {
             Click Below to Log In
           </Card.Text>
           <LoginButton 
-          handleUsernameInput={this.props.handleUsernameInput}/>
+          handleUsernameInput={this.props.handleUsernameInput}
+          handleEmailInput={this.props.handleEmailInput}/>
         </Card.Body>
       </Card>
     )
