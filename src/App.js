@@ -7,6 +7,8 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import './App.css';
+import { Container } from 'react-bootstrap';
 import BestBooks from './BestBooks';
 import Profile from './Profile';
 import Login from './Login'
@@ -39,7 +41,7 @@ class App extends React.Component {
     })
   }
 
-  
+
 
   // loginHandler = (user) => {
   //   this.setState({
@@ -50,7 +52,7 @@ class App extends React.Component {
   logoutHandler = () => {
     this.setState({
       user: null,
-      email:null,
+      email: null,
       books: []
     })
   }
@@ -60,39 +62,41 @@ class App extends React.Component {
   render() {
     // console.log(this.state.user);
     // console.log('app state',this.state);
-    console.log('email in app state',this.state.email);
+    // console.log('email in app state',this.state.email);
     return (
       <>
-        <Router>
-          <Header 
-          user={this.state.user} 
-          logoutHandler={this.logoutHandler} 
-          />
-          <Switch>
-            <Route exact path="/">
+        <Container className='app-container'>
+          <Router>
+            <Header
+              user={this.state.user}
+              logoutHandler={this.logoutHandler}
+            />
+            <Switch>
+              <Route exact path="/">
 
-              {this.state.user 
-              ?
-              <BestBooks />
-              :
-              <Login
-              handleUsernameInput={this.handleUsernameInput}
-              handleEmailInput={this.handleEmailInput}
-              />
-              }
+                {this.state.user
+                  ?
+                  <BestBooks />
+                  :
+                  <Login
+                    handleUsernameInput={this.handleUsernameInput}
+                    handleEmailInput={this.handleEmailInput}
+                  />
+                }
 
-            </Route>
+              </Route>
 
-            <Route exact path='/profile'>
-              <Profile
-                user={this.state.user}
-                books={this.state.books}
-                email={this.state.email} />
-            </Route>
+              <Route exact path='/profile'>
+                <Profile
+                  user={this.state.user}
+                  books={this.state.books}
+                  email={this.state.email} />
+              </Route>
 
-          </Switch>
-          <Footer />
-        </Router>
+            </Switch>
+            <Footer className='app-Footer'/>
+          </Router>
+        </Container>
       </>
     )
   }
