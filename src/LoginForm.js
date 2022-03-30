@@ -19,13 +19,17 @@ class LoginForm extends Component {
     this.props.handleUsernameInput(this.state.username);
   }
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     /* TODO: create a "simple" login form that collects username and and email, and lets parent component know when form has been submitted */
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="text" placeholder="Enter email" onChange={this.handleTypeUsername} />
+
+          {/* <Form.Label>Username: </Form.Label>
+          <Form.Control type="text" placeholder="Enter username" onChange={this.handleTypeUsername} /> */}
+
           <Button type='submit'>Login</Button>
           <Form.Text className="text-muted" >
             We'll maybe not never share your email with anyone else. Not shady.
