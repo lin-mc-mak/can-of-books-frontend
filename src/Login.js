@@ -6,7 +6,6 @@ import './Login.css';
 
 class Login extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <Card style={{ width: '18rem' }}>
         <Card.Body>
