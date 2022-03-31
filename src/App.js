@@ -18,40 +18,28 @@ const SERVER = process.env.REACT_APP_SERVER;
 const API_URL = `${SERVER}/books`;
 
 class App extends React.Component {
-
+ 
+ 
   constructor(props) {
     super(props);
     this.state = {
       user: null,
       email: null,
-      // user: {}
       books: [],
     }
   }
 
   handleUsernameInput = (user) => {
-    // e.preventDefault();
-    // console.log(e.target.value);
     this.setState({
       user
     })
   }
 
   handleEmailInput = (email) => {
-    // e.preventDefault();
-    // console.log(e.target.value);
     this.setState({
       email
     })
   }
-
-
-
-  // loginHandler = (user) => {
-  //   this.setState({
-  //     user 
-  //   })
-  // }
 
   logoutHandler = () => {
     this.setState({
@@ -60,8 +48,10 @@ class App extends React.Component {
       books: []
     })
   }
-  // onCreate
+
+  // event listener activating this is on the 'Save Book' button on modal and this will add to database.
   handleBookCreation = async (bookInfo) => {
+    console.log('function on app runnin');
     const response = await axios.post(API_URL, bookInfo);
     const newBook = response.data;
     this.setState({
@@ -71,9 +61,10 @@ class App extends React.Component {
 
   render() {
     // console.log(this.state.user);
-    console.log('app state',this.state);
+    // console.log('app state',this.state);
     // console.log('email in app state',this.state.email);
-    
+    console.log(this.state.books,'app state books');
+
     return (
       <>
         <Container className='app-container'>
@@ -88,7 +79,9 @@ class App extends React.Component {
                 {this.state.user
                   ?
                   <BestBooks 
-                  onCreate={this.handleBookCreation}
+                  handleBookCreation={this.handleBookCreation}
+                  email={this.state.email}
+
                   />
                   :
                   <Login

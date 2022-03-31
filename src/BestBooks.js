@@ -25,11 +25,12 @@ class BestBooks extends React.Component {
       console.log('an error has occurred: ', error.response.data)
     }
   }
-// super secret commented out line
+
+
+// This posts book when we click 'save book' button on 'add book' modal
   postBook = async (newBook) => {
     try {
       let createdBook = await axios.post(`${SERVER}/books`, newBook);
-      console.log(createdBook, 'Book posted to DB');
       this.setState({
         books: [...this.state.books, createdBook.data]
       })
@@ -38,17 +39,17 @@ class BestBooks extends React.Component {
     }
   }
 
-  handleBookSubmit = (e) => {
-    e.preventDefault();
-    let newBook = {
-      title: e.target.title.value,
-      description: e.target.description.value,
-      email: this.props.email,
-      status: false,
-    }
-    this.postBook(newBook);
-  }
 
+  // handleBookSubmit = (e) => {
+  //   e.preventDefault();
+  //   let newBook = {
+  //     title: e.target.title.value,
+  //     description: e.target.description.value,
+  //     email: this.props.email,
+  //     status: false,
+  //   }
+  //   this.postBook(newBook);
+  // }
 
 
   componentDidMount() {
@@ -56,14 +57,16 @@ class BestBooks extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'our best books props');
+
+    // console.log(this.props, 'our best books props');
     return (
       <>
         <h2>Can-Of-Books</h2>
         {
           this.state.showCarousel
             ?
-            <Container style={{ width: '75%' }}>
+            // DISPLAYING OUR CURRENT DATABASE BOOKS THAT ARE SAVED INTO STATE ON CAROUSEL
+            <Container style={{ width: '75%', height: '400px' }}>
               <Carousel>
                 {this.state.books.map(book => (
                   <Carousel.Item key={book._id}>
@@ -75,12 +78,17 @@ class BestBooks extends React.Component {
                 ))}
               </Carousel>
             </Container>
+
             :
+
             <p>the book collection is empty</p>
         }
+
         <BookFormModal
-        onCreate={this.props.onCreate}
-        /> 
+          handleBookCreation={this.props.handleBookCreation}
+          email={this.props.email}
+        />
+
       </>
     )
   }
