@@ -71,8 +71,9 @@ class App extends React.Component {
 
   render() {
     // console.log(this.state.user);
-    // console.log('app state',this.state);
+    console.log('app state',this.state);
     // console.log('email in app state',this.state.email);
+    
     return (
       <>
         <Container className='app-container'>
@@ -86,7 +87,9 @@ class App extends React.Component {
 
                 {this.state.user
                   ?
-                  <BestBooks />
+                  <BestBooks 
+                  onCreate={this.handleBookCreation}
+                  />
                   :
                   <Login
                     handleUsernameInput={this.handleUsernameInput}
