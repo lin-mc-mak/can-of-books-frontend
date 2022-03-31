@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Carousel, Container } from 'react-bootstrap';
+import BookFormModal from './BookFormModal';
 
 let SERVER = process.env.REACT_APP_SERVER;
 
@@ -77,6 +78,9 @@ class BestBooks extends React.Component {
             :
             <p>the book collection is empty</p>
         }
+        <BookFormModal
+        onCreate={this.props.onCreate}
+        /> 
       </>
     )
   }
