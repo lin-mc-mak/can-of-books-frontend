@@ -28,16 +28,12 @@ class BookFormModal extends Component {
       email: this.props.email,
       status: true
     })
-    this.props.updateBookCarousel();
     this.setState({
       newBookForm: false
     });
   };
 
-
   render() {
-    // console.log('status state on book modal',this.state.status);
-    // console.log(this.props, 'props on form');
     return (
       <>
         {this.state.newBookForm
@@ -72,27 +68,22 @@ class BookFormModal extends Component {
                   </Form.Select>
                 </FormGroup> */}
 
-
                 {/* SUBMIT NEW BOOK BUTTON */}
                 <Button variant="primary" type="submit">
                   Save Book
                 </Button>
               </Form>
 
-
             </Modal.Body>
             <Modal.Footer>
             </Modal.Footer>
           </Modal.Dialog>
-
 
           )
 
           :
 
           (<AddBookButton handleAddBook={this.handleAddBook} />)
-
-
         }
       </>
     );
