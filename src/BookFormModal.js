@@ -7,7 +7,6 @@ class BookFormModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: {},
       newBookForm: false,
     };
   }
@@ -29,6 +28,7 @@ class BookFormModal extends Component {
       email: this.props.email,
       status: true
     })
+    this.props.updateBookCarousel();
     this.setState({
       newBookForm: false
     });
@@ -82,7 +82,6 @@ class BookFormModal extends Component {
 
             </Modal.Body>
             <Modal.Footer>
-              THANKS FOR UPLOADING A BOOK!
             </Modal.Footer>
           </Modal.Dialog>
 

@@ -18,16 +18,17 @@ const SERVER = process.env.REACT_APP_SERVER;
 const API_URL = `${SERVER}/books`;
 
 class App extends React.Component {
- 
- 
+
+
   constructor(props) {
     super(props);
     this.state = {
       user: null,
       email: null,
-      books: [],
+      addedBooks: [],
     }
   }
+
 
   handleUsernameInput = (user) => {
     this.setState({
@@ -45,25 +46,29 @@ class App extends React.Component {
     this.setState({
       user: null,
       email: null,
-      books: []
+      addedBooks: []
     })
   }
 
   // event listener activating this is on the 'Save Book' button on modal and this will add to database.
   handleBookCreation = async (bookInfo) => {
-    console.log('function on app runnin');
-    const response = await axios.post(API_URL, bookInfo);
-    const newBook = response.data;
-    this.setState({
-      books: [...this.state.books, newBook]
-    })
-  }  
+    try {
+      const response = await axios.post(API_URL, bookInfo);
+      const newBook = response.data;
+      this.setState
+        ({ addedBooks: [...this.state.addedBooks, newBook] });
+    } catch (error) {
+      Promise.resolve().then(() => {
+        throw new Error(error.message);
+      });
+    }
+  }
 
   render() {
-    // console.log(this.state.user);
+    // console.log(this.state.addedBooks);
     // console.log('app state',this.state);
     // console.log('email in app state',this.state.email);
-    console.log(this.state.books,'app state books');
+    // console.log(this.state.books,'app state books');
 
     return (
       <>
@@ -78,9 +83,11 @@ class App extends React.Component {
 
                 {this.state.user
                   ?
-                  <BestBooks 
-                  handleBookCreation={this.handleBookCreation}
-                  email={this.state.email}
+                  <BestBooks
+                    handleBookCreation={this.handleBookCreation}
+                    email={this.state.email}
+                    addedBooks={this.state.addedBooks}
+
 
                   />
                   :
@@ -100,7 +107,7 @@ class App extends React.Component {
               </Route>
 
             </Switch>
-            <Footer className='app-Footer'/>
+            <Footer className='app-Footer' />
           </Router>
         </Container>
       </>

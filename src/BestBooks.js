@@ -22,12 +22,18 @@ class BestBooks extends React.Component {
         showCarousel: true
       })
     } catch (error) {
-      console.log('an error has occurred: ', error.response.data)
+      Promise.resolve().then(() => {
+        throw new Error(error.message);
+      });
     }
   }
 
+  componentDidMount() {
+    this.getBooks();
+  }
 
-// This posts book when we click 'save book' button on 'add book' modal
+
+  // This posts book when we click 'save book' button on 'add book' modal
   postBook = async (newBook) => {
     try {
       let createdBook = await axios.post(`${SERVER}/books`, newBook);
@@ -35,29 +41,18 @@ class BestBooks extends React.Component {
         books: [...this.state.books, createdBook.data]
       })
     } catch (error) {
-      console.log(error.response)
+      Promise.resolve().then(() => {
+        throw new Error(error.message);
+      });
     }
   }
 
-
-  // handleBookSubmit = (e) => {
-  //   e.preventDefault();
-  //   let newBook = {
-  //     title: e.target.title.value,
-  //     description: e.target.description.value,
-  //     email: this.props.email,
-  //     status: false,
-  //   }
-  //   this.postBook(newBook);
-  // }
-
-
-  componentDidMount() {
-    this.getBooks();
+  updateBookCarousel = () => {
+    this.getBooks()
   }
 
   render() {
-
+    // console.log(this.state.books, 'our best books books');
     // console.log(this.props, 'our best books props');
     return (
       <>
@@ -84,9 +79,10 @@ class BestBooks extends React.Component {
             <p>the book collection is empty</p>
         }
 
-        <BookFormModal
+        < BookFormModal
           handleBookCreation={this.props.handleBookCreation}
           email={this.props.email}
+          updateBookCarousel={this.updateBookCarousel}
         />
 
       </>
