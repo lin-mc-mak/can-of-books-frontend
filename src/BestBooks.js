@@ -3,17 +3,19 @@ import axios from 'axios';
 import { Carousel, Container } from 'react-bootstrap';
 import BookFormModal from './BookFormModal';
 
-let SERVER = process.env.REACT_APP_SERVER;
+const SERVER = process.env.REACT_APP_SERVER;
+const API_URL = `${SERVER}/books`;
 
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       books: [],
-      showCarousel: false
+      showCarousel: false,
     }
   };
 
+  // Function gets current books from data base on initial page load
   getBooks = async () => {
     try {
       let results = await axios.get(`${SERVER}/books`);
@@ -33,13 +35,16 @@ class BestBooks extends React.Component {
   }
 
 
-  // This posts book when we click 'save book' button on 'add book' modal
-  postBook = async (newBook) => {
+  // event listener activating this is on the 'Save Book' button on modal and this will add to database.
+  handleBookCreation = async (newBookInfo) => {
     try {
-      let createdBook = await axios.post(`${SERVER}/books`, newBook);
-      this.setState({
-        books: [...this.state.books, createdBook.data]
-      })
+      const createdBook = await axios.post(API_URL, newBookInfo);
+      const newBook = createdBook.data;
+      this.setState
+        ({ books: [...this.state.books, newBook] });
+
+      console.log(this.state.books);
+
     } catch (error) {
       Promise.resolve().then(() => {
         throw new Error(error.message);
@@ -47,13 +52,7 @@ class BestBooks extends React.Component {
     }
   }
 
-  updateBookCarousel = () => {
-    this.getBooks()
-  }
-
   render() {
-    // console.log(this.state.books, 'our best books books');
-    // console.log(this.props, 'our best books props');
     return (
       <>
         <h2>Can-Of-Books</h2>
@@ -80,9 +79,8 @@ class BestBooks extends React.Component {
         }
 
         < BookFormModal
-          handleBookCreation={this.props.handleBookCreation}
+          handleBookCreation={this.handleBookCreation}
           email={this.props.email}
-          updateBookCarousel={this.updateBookCarousel}
         />
 
       </>
