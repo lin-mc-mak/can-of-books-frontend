@@ -60,7 +60,7 @@ class BestBooks extends React.Component {
           this.state.showCarousel
             ?
             // DISPLAYING OUR CURRENT DATABASE BOOKS THAT ARE SAVED INTO STATE ON CAROUSEL
-            <Container style={{ width: '75%', height: '400px' }}>
+            <Container style={{ width: '100%', height: '400px'}}>
               <Carousel>
                 {this.state.books.map(book => (
                   <Carousel.Item key={book._id}>
