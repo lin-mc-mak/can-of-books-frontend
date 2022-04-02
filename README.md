@@ -1,7 +1,8 @@
 # can-of-books-back-end
 
 **Authors**: Ryan McMillan, Dwight Lindquist, and Michael Maker!
-**Version**: 1.1.0 
+**Version**: 3.0.0
+
 ## Overview
 
 Our collective human organization lin-mc-mak shall create a small app to track what books have impacted us, and what’s recommended to read next
@@ -22,14 +23,12 @@ Our collective human organization lin-mc-mak shall create a small app to track w
 
 ## Change Log
 
-
 03-28-2022 18:33 - Application now has a fully-functional express server, with a GET route for the database request.
 Seed function can be used to instantiate data into database.
 
 03-30-2022 11:40 - Front end now has simple login form and header navigation between home page and profile page. Back-end now has connection with mongoDB and can GET seed data from database, will be adding CREATE and DELETE functionality.
 
-## Estimates
-
+04-02-2022 14:15 - Add functionality to front and back end of application to allow user to add books to the database and delete from database.
 
 ## Estimates
 
@@ -41,14 +40,25 @@ Worked over multiple days
 
 Actual time needed to complete: about 8 hours
 
-WRRC for today
+---
 
-![WRRC for today](./img/wrrc-lab-11.png "Monday Whiteboard")
+Name of feature: Book Add and Delete from DB
+
+Estimate of time needed to complete: 4:00
+
+Worked over multiple days
+
+Actual time needed to complete: about 9 hours
+
+---
+
+How Our Web Request Response Cycle Functions
+
+![WRRC for today](src/img/wrrc-lab-11.png "Lab Whiteboard")
 
 ## Credit and Collaborations
 
-
-
+Referenced [CodeFellows GitHub resources](https://github.com/codefellows)
 
 ### Logistical
 
@@ -109,8 +119,6 @@ What will your team do if one person is taking over the project and not letting 
 How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level?
 
 * Help and encourage each other if there's a lack of understanding so all members understand.
-
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
 ---
 ---
