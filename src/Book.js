@@ -15,22 +15,28 @@ class Book extends React.Component {
 
             <div>
 
-              {this.props.email === this.props.book.email 
-              
-              &&
+              {this.props.email === this.props.book.email
 
-              (
-                <>
-                <Button
-                  variant='danger'
-                  onClick={() => this.props.handleDeleteBooks(this.props.book._id)}
-                >
-                  Delete book
-                </Button>
+                &&
 
-                {/* <UpdateBookModal/>  */}
-                </>
-              )    
+                (
+                  <>
+                    <Button
+                      variant='danger'
+                      onClick={() => this.props.handleDeleteBooks(this.props.book._id)}
+                    >
+                      Delete book
+                    </Button>
+
+
+                    <UpdateBookModal
+                      email={this.props.email}
+                      book={this.props.book}
+                      _id={this.props._id}
+                      handleUpdateBooks={this.props.handleUpdateBooks}
+                    />
+                  </>
+                )
               }
 
             </div>
