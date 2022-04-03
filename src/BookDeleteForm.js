@@ -11,14 +11,15 @@ class BookDeleteForm extends React.Component {
     let books = this.props.booksWeHave.map(book => (
       <Book
         book={book}
+        _id={book._id}
         key={book._id}
         booksWeHave={this.props.booksWeHave}
         handleDeleteBooks={this.props.handleDeleteBooks}
         email={this.props.email}
-
-
+        handleUpdateBooks={this.props.handleUpdateBooks}
       />
     ))
+    
     return (
         <Container>
           <ListGroup>
