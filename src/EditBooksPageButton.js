@@ -6,7 +6,7 @@ class EditBooksPageButton extends Component {
   render() {
     return (
       <Button variant="danger" onClick={this.props.openBookDeleteForm}>
-        Delete Book
+        Update or Delete Book
       </Button>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ListGroup, Container, Button } from 'react-bootstrap';
+import UpdateBookModal from './UpdateBookModal.js';
 
 class Book extends React.Component {
   render() {
@@ -14,14 +15,22 @@ class Book extends React.Component {
 
             <div>
 
-              {this.props.email.toLowerCase() === this.props.book.email
+              {this.props.email === this.props.book.email 
+              
               &&
+
+              (
+                <>
                 <Button
                   variant='danger'
                   onClick={() => this.props.handleDeleteBooks(this.props.book._id)}
                 >
                   Delete book
                 </Button>
+
+                {/* <UpdateBookModal/>  */}
+                </>
+              )    
               }
 
             </div>
