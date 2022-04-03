@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Button, FormGroup, Modal } from "react-bootstrap";
 import Form from 'react-bootstrap/Form'
-import AddBookButton from "./AddBookButton";
+// import AddBookButton from "./AddBookButton";
 
 class UpdateBookModal extends Component {
   constructor(props) {
@@ -13,37 +13,42 @@ class UpdateBookModal extends Component {
 
   handleUpdateBook = () => {
     this.setState({
-      UpdateBookModal: true,
+      updateBookModal: true,
     });
   };
 
 
   // Take new book form inputs and call function 'handleBookCreation prop ' on App.js component to send new book info to database
-  handleTitleInput = (e) => {
+  handleUpdateInput = (e) => {
     e.preventDefault();
-    this.props.handleBookCreation({
+    this.props.handleUpdateBooks({
       title: e.target.bookName.value,
       description: e.target.bookDescription.value,
       email: this.props.email,
-      status: true
+      status: 'true',
+      _id:this.props._id
     })
     this.setState({
-      newBookForm: false
+      updateBookModal: false
     });
   };
 
   render() {
+    console.log(' updatebookmodal email=',this.props.email);
+    console.log(this.props._id, 'props on Update Book Modal Form');
     return (
       <>
-        {this.state.UpdateBookModal
+        {this.state.updateBookModal
           ?
-          (<Modal.Dialog>
+          (
+          <Modal.Dialog>
             <Modal.Header closeButton>
               <Modal.Title>Update Book</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-
-              <Form onSubmit={this.handleTitleInput}>
+{/*                       onClick={() => this.props.handleDeleteBooks(this.props.book._id)}
+ */}
+              <Form onSubmit={this.handleUpdateInput}>
 
                 {/* TAKING IN BOOK TITLE */}
                 <FormGroup controlId="bookName">
@@ -82,7 +87,12 @@ class UpdateBookModal extends Component {
 
           :
 
-          (<Button handleUpdateBook={this.handleUpdateBook} />)
+          (
+          <Button onClick={this.handleUpdateBook}>
+            Update book
+          </Button>
+          )
+        
         }
       </>
     );
