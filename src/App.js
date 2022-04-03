@@ -11,7 +11,7 @@ import {
   Route
 } from "react-router-dom";
 import { Container } from 'react-bootstrap';
-import './App.css';
+import './page-style-css/App.css';
 
 class App extends React.Component {
   constructor(props) {
