@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import LoginForm from './LoginForm';
+import LoginForm from './LoginButton';
 // import LoginForm from './LoginForm';
 import './page-style-css/Login.css';
 
