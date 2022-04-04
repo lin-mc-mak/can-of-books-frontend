@@ -15,7 +15,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 // 3 new routes with OAuth
 import Profile from './Profile';
 import OAuthLogout from './OAuthLogout';
-import LoginForm from './LoginForm';
+import LoginForm from './LoginButton';
 
 
 
